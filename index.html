@@ -34,6 +34,15 @@
     </article>
     
     <footer>
+       <script>
+        // Obtener el número de visitas almacenado
+        let visitas = localStorage.getItem('visitas');
+        visitas = visitas ? parseInt(visitas) + 1 : 1;
+        localStorage.setItem('visitas', visitas);
+
+        // Mostrar el número de visitas en la página
+        document.getElementById('contador').textContent = visitas;
+    </script>
         <p>&copy; 2025 Juan Pérez</p>
     </footer>
 </body>
