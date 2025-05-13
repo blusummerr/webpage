@@ -1,49 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-   <style>
-    p {
-      color: blue;
-    }
-    h1 {
-      color: orange;
-    }
-      background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fcapricho.abril.com.br%2Fcomportamento%2Folivia-rodrigo-revela-maior-red-flag-quando-se-trata-de-relacionamentos%2F&psig=AOvVaw1Fqh8JZBKRf375DLYIBKzw&ust=1747178216616000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjGrZ2In40DFQAAAAAdAAAAABAM); /* Reemplaza con tu URL */
-      background-size: cover; /* Para que cubra toda la pantalla */
-      background-repeat: no-repeat; /* Para que no se repita */
-      background-position: center center; /* Para centrar la imagen */
-  </style> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página de Presentación</title>
+    <title>Página Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Fuente */
+            font-size: 16px; /* Tamaño de fuente */
+            background-color: #f0f0f0; /* Color de fondo */
+            color: #333; /* Color de texto */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #0073e6; /* Color del encabezado */
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555; /* Color del párrafo */
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <h1>Bienvenidos a Mi Página</h1>
-    </header>
-    
-    <section>
-        <h2>Sobre Mí</h2>
-        <p>Hola, soy  karla. Soy desarrollador web y me apasiona la programación y el diseño web.</p>
-    </section>
-    
-    <article>
-        <h2>Mi Proyecto Reciente</h2>
-        <p>He trabajado en varios proyectos de desarrollo web. Actualmente estoy desarrollando una plataforma de e-commerce.</p>
-    </article>
-    
-    <footer>
-       <script>
-        // Obtener el número de visitas almacenado
-        let visitas = localStorage.getItem('visitas');
-        visitas = visitas ? parseInt(visitas) + 1 : 1;
-        localStorage.setItem('visitas', visitas);
-
-        // Mostrar el número de visitas en la página
-        document.getElementById('contador').textContent = visitas;
-    </script>
-        <p>&copy; 2025 Juan Pérez</p>
-    </footer>
+    <div class="container">
+        <h1>Bienvenido a la Página</h1>
+        <p>Esta es una página simple con estilos aplicados.</p>
+    </div>
 </body>
 </html>
