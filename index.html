@@ -1,54 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Fuente */
-            font-size: 16px; /* Tamaño de fuente */
-            background-color: #c970ff; /* Color de fondo */
-            color: #333; /* Color de texto */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            text-align: center;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #0073e6; /* Color del encabezado */
-        }
-
-        p {
-            font-size: 1rem;
-            color: #555; /* Color del párrafo */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página con Música, Botón y Contador</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+      box-sizing: border-box;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2.5rem 2rem 2rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 350px;
+      width: 90%;
+    }
+    h1 {
+      margin: 0 0 1rem 0;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+    .counter {
+      font-size: 1.5rem;
+      margin: 1.5rem 0;
+      font-weight: 400;
+      background: rgba(255,255,255,0.2);
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      margin-top: 1.3rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(78,73,144,0.27);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #8e54e9 0%, #4776e6 100%);
+      transform: scale(1.05);
+    }
+    .music-info {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    audio {
+      display: none; /* hidden, but will autoplay */
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenido a la Página</h1>
-        <p>Esta es una página morada.</p>
-        <!-- YouTube audio embed oculto -->
-        <div>
-          <iframe class="iframe-audio"
-              src="https://www.youtube.com/watch?v=cii6ruuycQA"
-              allow="autoplay"
-              allowfullscreen>
-          </iframe>
-        </div>
+  <div class="container">
+    <h1>Bienvenido</h1>
+    <div class="counter">
+      Visitas únicas en este navegador: <span id="visitCount">1</span>
     </div>
+    <br>
+    <button class="btn" onclick="window.location.href='https://www.ejemplo.com'">
+      Ir a otra página
+    </button>
+    <div class="music-info">
+      <span>♫ Reproduciendo música de fondo automáticamente</span>
+    </div>
+    <audio id="bgMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
+  </div>
+  <script>
+    // Contador estático por navegador usando localStorage
+    const counterKey = "pagina-con-musica-contador";
+    let count = localStorage.getItem(counterKey);
+    if (!count) {
+      count = 1;
+      localStorage.setItem(counterKey, count);
+    }
+    document.getElementById("visitCount").textContent = count;
+
+    // Intentar reproducir la música automáticamente en cada visita
+    window.addEventListener('DOMContentLoaded', function() {
+      const audio = document.getElementById('bgMusic');
+      // Algunos navegadores requieren una interacción del usuario para reproducir audio
+      function tryPlay() {
+        audio.play().catch(() => {});
+      }
+      tryPlay();
+      document.body.addEventListener('click', tryPlay, { once: true });
+    });
+  </script>
 </body>
 </html>
